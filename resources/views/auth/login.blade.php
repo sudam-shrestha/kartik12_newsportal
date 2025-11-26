@@ -17,11 +17,11 @@
         <!-- Email Address -->
         <div class="relative">
             <x-text-input id="email"
-                class="peer block w-full px-4 py-3 border-gray-300 dark:border-gray-600 dark:bg-gray-700 rounded-xl focus:ring-indigo-500 focus:border-indigo-500 shadow-sm transition"
+                class="peer block w-full px-4 py-3 border-gray-300 dark:border-gray-600 dark:bg-gray-700 rounded-xl focus:ring-purple-500 focus:border-purple-500 shadow-sm transition"
                 type="email" name="email" :value="old('email')" required autofocus autocomplete="username"
                 placeholder=" " />
             <label for="email"
-                class="absolute left-4 top-3 text-gray-500 dark:text-gray-400 text-sm transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-xs peer-focus:bg-white dark:peer-focus:bg-gray-800 peer-focus:px-1 peer-focus:text-indigo-600">
+                class="absolute left-4 top-3 text-gray-500 dark:text-gray-400 text-sm transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-xs peer-focus:bg-white dark:peer-focus:bg-gray-800 peer-focus:px-1 peer-focus:text-purple-600">
                 Email Address
             </label>
             <x-input-error :messages="$errors->get('email')" class="mt-2 text-sm text-red-600" />
@@ -29,13 +29,13 @@
 
         <div class="relative">
             <x-text-input id="password"
-                class="peer block w-full px-4 py-3 pr-12 border-gray-300 dark:border-gray-600 dark:bg-gray-700 rounded-xl focus:ring-indigo-500 focus:border-indigo-500 shadow-sm transition"
+                class="peer block w-full px-4 py-3 pr-12 border-gray-300 dark:border-gray-600 dark:bg-gray-700 rounded-xl focus:ring-purple-500 focus:border-purple-500 shadow-sm transition"
                 type="password" name="password" required placeholder=" " />
             <label for="password"
                 class="absolute left-4 top-3 text-gray-500 dark:text-gray-400 text-sm transition-all
         peer-placeholder-shown:top-3 peer-placeholder-shown:text-base
         peer-focus:-top-2.5 peer-focus:text-xs peer-focus:bg-white dark:peer-focus:bg-gray-800
-        peer-focus:px-1 peer-focus:text-indigo-600">
+        peer-focus:px-1 peer-focus:text-purple-600">
                 Password
             </label>
 
@@ -68,13 +68,13 @@
         <div class="flex items-center justify-between">
             <label for="remember_me" class="flex items-center">
                 <input id="remember_me" type="checkbox" name="remember"
-                    class="w-4 h-4 text-indigo-600 rounded border-gray-300 focus:ring-indigo-500">
+                    class="w-4 h-4 text-purple-600 rounded border-gray-300 focus:ring-purple-500">
                 <span class="ml-2 text-sm text-gray-600 dark:text-gray-300">Remember me</span>
             </label>
 
             @if (Route::has('password.request'))
                 <a href="{{ route('password.request') }}"
-                    class="text-sm text-indigo-600 hover:text-indigo-500 font-medium transition">
+                    class="text-sm text-purple-600 hover:text-purple-500 font-medium transition">
                     Forgot your password?
                 </a>
             @endif
@@ -83,7 +83,7 @@
         <!-- Submit Button -->
         <div>
             <x-primary-button
-                class="w-full justify-center py-3 px-4 text-sm font-semibold rounded-xl shadow-lg bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition transform hover:-translate-y-0.5">
+                class="w-full justify-center py-3 px-4 text-sm font-semibold rounded-xl shadow-lg bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition transform hover:-translate-y-0.5">
                 Sign in to your account
             </x-primary-button>
         </div>
@@ -92,7 +92,7 @@
         @if (Route::has('register'))
             <p class="text-center text-sm text-gray-600 dark:text-gray-400">
                 Don't have an account?
-                <a href="{{ route('register') }}" class="font-medium text-indigo-600 hover:text-indigo-500">
+                <a href="{{ route('register') }}" class="font-medium text-purple-600 hover:text-purple-500">
                     Create one now
                 </a>
             </p>

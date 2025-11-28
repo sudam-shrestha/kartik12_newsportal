@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Hash;
@@ -23,6 +24,10 @@ Route::middleware('auth')->group(function () {
 
 
 
-Route::resource("/admin/category", CategoryController::class)->names('admin.category');
+
+Route::middleware('auth')->prefix('/admin')->group(function(){
+    Route::resource("/category", CategoryController::class)->names('admin.category');
+    Route::resource("/article", ArticleController::class)->names('admin.article');
+});
 
 require __DIR__ . '/auth.php';

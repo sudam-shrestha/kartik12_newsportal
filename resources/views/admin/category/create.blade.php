@@ -12,26 +12,28 @@
                         <div class="row">
                             <div class="mb-2 col-6">
                                 <label for="title">Title <span class="text-danger">*</span></label>
-                                <input type="text" name="title" id="title" class="form-control">
-                            </div>
-
-                            <div class="mb-2 col-6">
-                                <label for="slug">Slug <span class="text-danger">*</span></label>
-                                <input type="text" name="slug" id="slug" class="form-control">
+                                <input type="text" name="title" id="title" class="form-control" value="{{old('title')}}">
+                                @error('title')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
 
                             <div class="mb-2 col-6">
                                 <label for="position">Position <span class="text-danger">*</span></label>
-                                <input type="text" name="position" id="position" class="form-control">
+                                <input type="number" name="position" id="position" class="form-control"
+                                    value="{{ old('position') ?? $position }}">
+                                @error('position')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
 
                             <div class="mb-2 col-12">
-                                <label for="meta_keywords">Meta Keywords <span class="text-danger">*</span></label>
+                                <label for="meta_keywords">Meta Keywords</label>
                                 <textarea name="meta_keywords" id="meta_keywords" class="form-control"></textarea>
                             </div>
 
-                             <div class="mb-2 col-12">
-                                <label for="meta_description">Meta Description <span class="text-danger">*</span></label>
+                            <div class="mb-2 col-12">
+                                <label for="meta_description">Meta Description</label>
                                 <textarea name="meta_description" id="meta_description" class="form-control"></textarea>
                             </div>
 

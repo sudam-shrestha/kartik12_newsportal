@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug');
             $table->string('writer_name');
-            $table->integer('views');
+            $table->integer('views')->default(0);
             $table->string('image');
             $table->longText('description');
             $table->boolean('visible')->default(true);

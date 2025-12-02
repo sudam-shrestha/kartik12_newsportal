@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdvertiseController;
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\ProfileController;
@@ -28,6 +29,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->prefix('/admin')->group(function(){
     Route::resource("/category", CategoryController::class)->names('admin.category');
     Route::resource("/article", ArticleController::class)->names('admin.article');
+    Route::resource("/advertise", AdvertiseController::class)->names('admin.advertise');
 });
 
 require __DIR__ . '/auth.php';

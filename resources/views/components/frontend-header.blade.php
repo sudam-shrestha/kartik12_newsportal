@@ -1,33 +1,29 @@
-<header class="py-4">
+<header class="my-4 pt-4 sticky top-0 z-50 bg-white">
 
-    <div class="flex justify-between items-center gap-8 container pb-4">
-        <img class="h-[80px]" src="https://jawaaf.com/storage/01JTAR172JR8ZT7NTGZQX93FTB.png" alt="">
+    <div class="md:flex space-y-4 justify-between items-center gap-8 container pb-4">
+        <img class="h-[60px] md:h-[80px]" src="https://jawaaf.com/storage/01JTAR172JR8ZT7NTGZQX93FTB.png" alt="">
 
-        <a href="" class="flex-grow">
-            <img class="w-full h-[116px] object-cover"
+        <a href="" class="flex-grow ">
+            <img class="w-full h-[96px] md:h-[116px] object-cover"
                 src="https://imgs.search.brave.com/TBBMavShAbtaOYRv-TGIldbiky00xV7gFuA91lE5-7U/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9maXZl/cnItcmVzLmNsb3Vk/aW5hcnkuY29tL3Zp/ZGVvL3VwbG9hZC9z/b18wLjI1MDE1MSx0/X2dpZ19jYXJkc193/ZWIvcTJ4dXRyaWFn/YWVrOHdlcmgwZ2gu/cG5n"
                 alt="">
         </a>
 
         <div>
-            <p>
-                मङ्गलबार, १६ मंसिर २०८२
+            <p class="text-lg">
+                {{ toNepaliDate(now()) }}
             </p>
-            <img class="h-[15px]" src="https://jawaaf.com/frontend/images/redline.png" alt="">
+            <img class="h-[14px]" src="https://jawaaf.com/frontend/images/redline.png" alt="">
         </div>
     </div>
 
-
-
     <nav class="bg-primary py-2 text-white">
-        <div class="container flex justify-between items-center">
-            <div class="flex gap-10">
+        <div class="container md:flex justify-between space-y-4 md:space-y-0 items-center">
+            <div class="flex overflow-x-auto gap-10 py-2 md:py-0">
                 <a href="">Home</a>
-                <a href="">Politics</a>
-                <a href="">Crime</a>
-                <a href="">Sports</a>
-                <a href="">Education</a>
-                <a href="">Health</a>
+                @foreach ($categories as $category)
+                    <a href="">{{ $category->title }}</a>
+                @endforeach
             </div>
             <div>
 

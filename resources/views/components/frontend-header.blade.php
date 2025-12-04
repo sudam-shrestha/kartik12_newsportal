@@ -1,13 +1,16 @@
-<header class="my-4 pt-4 sticky top-0 z-50 bg-white">
+<header class="my-4 pt-4 z-50 bg-white">
 
     <div class="md:flex space-y-4 justify-between items-center gap-8 container pb-4">
         <img class="h-[60px] md:h-[80px]" src="https://jawaaf.com/storage/01JTAR172JR8ZT7NTGZQX93FTB.png" alt="">
 
-        <a href="" class="flex-grow ">
-            <img class="w-full h-[96px] md:h-[116px] object-cover"
-                src="https://imgs.search.brave.com/TBBMavShAbtaOYRv-TGIldbiky00xV7gFuA91lE5-7U/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9maXZl/cnItcmVzLmNsb3Vk/aW5hcnkuY29tL3Zp/ZGVvL3VwbG9hZC9z/b18wLjI1MDE1MSx0/X2dpZ19jYXJkc193/ZWIvcTJ4dXRyaWFn/YWVrOHdlcmgwZ2gu/cG5n"
-                alt="">
-        </a>
+        <div class="grow">
+            @foreach ($header_advertises as $advertise)
+                <a href="{{ $advertise->redirect_link }}" target="_blank">
+                    <img class="w-full h-[96px] md:h-[116px] object-cover" src="{{ asset($advertise->image) }}"
+                        alt="{{ $advertise->company_name }}">
+                </a>
+            @endforeach
+        </div>
 
         <div>
             <p class="text-lg">
@@ -22,7 +25,7 @@
             <div class="flex overflow-x-auto gap-10 py-2 md:py-0">
                 <a href="">Home</a>
                 @foreach ($categories as $category)
-                    <a href="">{{ $category->title }}</a>
+                    <a href="{{ route('category', $category->slug) }}">{{ $category->title }}</a>
                 @endforeach
             </div>
             <div>

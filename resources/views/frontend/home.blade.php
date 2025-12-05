@@ -58,49 +58,51 @@
         <div class="container py-8 space-y-8">
 
             @foreach ($categories as $category)
-                <h2
-                    class="text-2xl py-2 border-l-4 border-[var(--primary-color)] pl-2 font-semibold text-primary bg-[var(--light-primary-color)]">
-                    {{ $category->title }}</h2>
+                @if (count($category->articles) > 0)
+                    <h2
+                        class="text-2xl py-2 border-l-4 border-[var(--primary-color)] pl-2 font-semibold text-primary bg-[var(--light-primary-color)]">
+                        {{ $category->title }}</h2>
 
 
-                <div class="grid md:grid-cols-3 gap-6 ">
-                    @php
-                        $category_first = $category->articles()->orderBy('id','desc')->first();
-                        $category_others = $category->articles()->orderBy('id','desc')->skip(1)->take(4)->get();
-                        $side_articles = $category->articles()->orderBy('id','desc')->skip(5)->take(7)->get();
-                    @endphp
+                    <div class="grid md:grid-cols-3 gap-6 ">
+                        @php
+                            $category_first = $category->articles()->orderBy('id', 'desc')->first();
+                            $category_others = $category->articles()->orderBy('id', 'desc')->skip(1)->take(4)->get();
+                            $side_articles = $category->articles()->orderBy('id', 'desc')->skip(5)->take(7)->get();
+                        @endphp
 
-                    <div class="md:col-span-2">
-                        <a href="">
-                            <div class="shadow-md rounded-md overflow-hidden">
-                                <img class="w-full h-[300px] object-cover" src="{{ asset($category_first->image) }}"
-                                    alt="{{ $category_first->title }}">
-                                <div class="p-3">
-                                    <h2 class="text-lg md:text-xl lg:text-2xl font-semibold line-clamp-1">
-                                        {{ $category_first->title }}
-                                    </h2>
-                                    <div class="text-sm line-clamp-2">
-                                        {!! $category_first->description !!}
+                        <div class="md:col-span-2">
+                            <a href="">
+                                <div class="shadow-md rounded-md overflow-hidden">
+                                    <img class="w-full h-[300px] object-cover" src="{{ asset($category_first->image) }}"
+                                        alt="{{ $category_first->title }}">
+                                    <div class="p-3">
+                                        <h2 class="text-lg md:text-xl lg:text-2xl font-semibold line-clamp-1">
+                                            {{ $category_first->title }}
+                                        </h2>
+                                        <div class="text-sm line-clamp-2">
+                                            {!! $category_first->description !!}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
 
-                        <div class="grid md:grid-cols-2 gap-4 mt-6">
-                            @foreach ($category_others as $article)
-                                <x-article-card :article="$article" />
+                            <div class="grid md:grid-cols-2 gap-4 mt-6">
+                                @foreach ($category_others as $article)
+                                    <x-article-card :article="$article" />
+                                @endforeach
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            @foreach ($side_articles as $article)
+                                <div>
+                                    <x-article-card :article="$article" />
+                                </div>
                             @endforeach
                         </div>
                     </div>
-
-                    <div class="space-y-4">
-                        @foreach ($side_articles as $article)
-                            <div>
-                                <x-article-card :article="$article" />
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
+                @endif
             @endforeach
 
 

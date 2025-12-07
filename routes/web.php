@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 // Frontend Routes
 Route::get("/", [PageController::class, "home"])->name("home");
 Route::get("/category/{slug}", [PageController::class, "category"])->name("category");
+Route::get("/search", [PageController::class, "search"])->name("search");
+Route::get("/article/{slug}", [PageController::class, "article"])->name("article");
+
 
 
 // Breeze Route
@@ -34,7 +37,7 @@ Route::middleware('auth')->group(function () {
 
 
 // Admin Route
-Route::middleware('auth')->prefix('/admin')->group(function(){
+Route::middleware('auth')->prefix('/admin')->group(function () {
     Route::resource("/category", CategoryController::class)->names('admin.category');
     Route::resource("/article", ArticleController::class)->names('admin.article');
     Route::resource("/advertise", AdvertiseController::class)->names('admin.advertise');

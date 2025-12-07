@@ -1,5 +1,5 @@
 @props(['article'])
-<a href="">
+<a href="{{route('article', $article->slug)}}">
     <div class="grid grid-cols-3 items-center gap-2 shadow-md rounded-md overflow-hidden">
         <img class="w-full h-[90px] overflow-hidden" src="{{ asset($article->image) }}"
             alt="{{ $article->title }}">

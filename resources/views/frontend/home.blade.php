@@ -1,7 +1,7 @@
-<x-frontend-layout>
+<x-frontend-layout title="Home" description="helllo" keywords="hiii">
     <section>
         <div class="container pb-8">
-            <a href="">
+            <a href="{{ route('article', $latest_news->slug) }}">
                 <div class="shadow-lg p-4 rounded-lg overflow-hidden">
                     <h1 class="text-xl md:text-2xl lg:text-3xl font-semibold mb-2">{{ $latest_news->title }}</h1>
                     <img class="w-full" src="{{ asset($latest_news->image) }}" alt="{{ $latest_news->title }}">
@@ -18,7 +18,7 @@
             @endphp
 
             <div class="md:col-span-2">
-                <a href="">
+                <a href="{{ route('article', $first->slug) }}">
                     <div class="shadow-md rounded-md overflow-hidden">
                         <img class="w-full h-[300px] object-cover" src="{{ asset($first->image) }}"
                             alt="{{ $first->title }}">
@@ -72,7 +72,7 @@
                         @endphp
 
                         <div class="md:col-span-2">
-                            <a href="">
+                            <a href="{{ route('article', $category_first->slug) }}">
                                 <div class="shadow-md rounded-md overflow-hidden">
                                     <img class="w-full h-[300px] object-cover" src="{{ asset($category_first->image) }}"
                                         alt="{{ $category_first->title }}">

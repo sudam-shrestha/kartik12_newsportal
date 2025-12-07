@@ -7,6 +7,7 @@ use App\Models\Advertise;
 use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\View;
 
 class PageController extends BaseController
@@ -22,7 +23,29 @@ class PageController extends BaseController
     public function category($slug)
     {
         $category = Category::where('slug', $slug)->first();
-        $articles = $category->articles()->latest()->get();
-        return view('frontend.category', compact('category', 'articles'));
+        $articles = $category->articles()->latest()->paginate(8);
+        $page_advertises = Advertise::where("expire_date", ">=", date('Y-m-d'))->where('ad_position', 'pages')->get();
+        return view('frontend.category', compact('category', 'articles', 'page_advertises'));
+    }
+
+    public function search(Request $request)
+    {
+        $q = $request->q;
+        $articles = Article::where('title', "like", "%$q%")->get();
+        $page_advertises = Advertise::where("expire_date", ">=", date('Y-m-d'))->where('ad_position', 'pages')->get();
+        return view('frontend.search', compact('q', 'articles', 'page_advertises'));
+    }
+
+    public function article($slug)
+    {
+        $article = Article::where('slug', $slug)->first();
+
+        $id = Cookie::get($article->id);
+        if(!$id){
+            $article->increment('views');
+            Cookie::queue($article->id, $article->id);
+        }
+        $page_advertises = Advertise::where("expire_date", ">=", date('Y-m-d'))->where('ad_position', 'pages')->get();
+        return view('frontend.article', compact('article', 'page_advertises'));
     }
 }

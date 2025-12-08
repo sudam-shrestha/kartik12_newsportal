@@ -74,8 +74,8 @@
                         <div class="md:col-span-2">
                             <a href="{{ route('article', $category_first->slug) }}">
                                 <div class="shadow-md rounded-md overflow-hidden">
-                                    <img class="w-full h-[300px] object-cover" src="{{ asset($category_first->image) }}"
-                                        alt="{{ $category_first->title }}">
+                                    <img class="w-full h-[300px] object-cover"
+                                        src="{{ asset($category_first->image) }}" alt="{{ $category_first->title }}">
                                     <div class="p-3">
                                         <h2 class="text-lg md:text-xl lg:text-2xl font-semibold line-clamp-1">
                                             {{ $category_first->title }}
